@@ -2,7 +2,7 @@
 #include <boost/process/operations.hpp>
 #include <boost/process.hpp>
 #include <iostream>
-#include <boost/regex.hpp>
+#include <regex>
 
 namespace bp = boost::process;
 
@@ -25,13 +25,13 @@ int main(int argc, char ** argv)
     bp::pistream & is = child.get_stdout();
 
     std::string line;
-    boost::regex pattern("\\S+\\s*");
-    boost::smatch matches;
+    std::regex pattern("\\S+\\s*");
+    std::smatch matches;
     auto words_number = 0;
 
     while (std::getline(is, line))
     {
-        while (boost::regex_search(line, matches, pattern))
+        while (std::regex_search(line, matches, pattern))
         {
             words_number += matches.size();
             line = matches.suffix().str();
