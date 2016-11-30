@@ -11,8 +11,6 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 
 find_package(Boost COMPONENTS system REQUIRED)
 
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-    add_executable(wc main.cpp)
-    target_link_libraries(wc ${Boost_LIBRARIES})
-endif()
+include_directories(${Boost_INCLUDE_DIRS})
+add_executable(wc main.cpp)
+target_link_libraries(wc ${Boost_LIBRARIES})
