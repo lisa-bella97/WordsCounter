@@ -34,7 +34,7 @@ int main(int argc, char ** argv)
         while (std::regex_search(line, matches, pattern))
         {
             words_number += matches.size();
-            line = matches.suffix().str();
+            line = matches.suffix();
         }
     }
 
