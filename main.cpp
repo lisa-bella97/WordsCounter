@@ -9,10 +9,11 @@ namespace bp = boost::process;
 bp::child start_child(std::string path)
 {
     bp::context ctx;
+    std::vector<std::string> args = { path };
     ctx.stdout_behavior = bp::capture_stream();
     ctx.environment = bp::self::get_environment();
 
-    return bp::launch(path, std::vector<std::string>(1), ctx);
+    return bp::launch(path, args, ctx);
 }
 
 int main(int argc, char ** argv)
